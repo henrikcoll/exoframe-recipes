@@ -1,0 +1,14 @@
+{
+  "name": "exoframe-recipe-wekan",
+  "version": "0.0.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "exoframe-recipe",
+    "exoframe",
+    "wekan"
+  ],
+  "author": "Henrik Næss <henrik@heka.no>",
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "exoframe-recipe-node-red",
+  "version": "1.2.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "exoframe-recipe",
+    "exoframe",
+    "node-red"
+  ],
+  "author": "Henrik Næss <henrik@heka.no>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3"
+  }
+}
