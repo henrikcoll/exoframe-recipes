@@ -29,7 +29,7 @@ exports.getQuestions = () => [
     type: 'confirm',
     name: 'enable_projects',
     message: 'Do you want to enable the projects feature?',
-    default: true
+    default: false
   },
   {
     type: 'confirm',
