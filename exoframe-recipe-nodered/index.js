@@ -60,7 +60,7 @@ const start_node_red = async ({username, docker, conf}) => {
         Target: '/data',
       },
     ],
-    Env: [`ADMIN_USERNAME=${conf.admin_username}`, `ADMIN_PASSWORD=${bcrypt.hashSync(conf.admin_password)}`, `PORT=80`, `ENABLE_PROJECTS=${conf.enable_projects}`, `ENABLE_FILE_CONTEXT_STORAGE=${conf.enable_context_file_storage}`],
+    Env: [`ADMIN_USERNAME=${conf.admin_username}`, `ADMIN_PASSWORD=${bcrypt.hashSync(conf.admin_password)}`, `PORT=1880`, `ENABLE_PROJECTS=${conf.enable_projects}`, `ENABLE_FILE_CONTEXT_STORAGE=${conf.enable_context_file_storage}`],
   });
 };
 
