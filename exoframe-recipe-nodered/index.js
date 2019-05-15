@@ -5,6 +5,11 @@ const generateName = require('./generateName')
 exports.getQuestions = () => [
   {
     type: 'input',
+    name: 'projectname',
+    message: 'Project name:',
+  },
+  {
+    type: 'input',
     name: 'name',
     message: 'Instance name:',
   },
@@ -48,7 +53,7 @@ exports.getQuestions = () => [
 const start_node_red = async ({username, docker, conf}) => {
   return await docker.startFromParams({
     image: node_red_image,
-    projectName: conf.name,
+    projectName: conf.projectname,
     username,
     deploymentName: conf.name,
     frontend: `Host:${conf.url}`,
@@ -113,6 +118,7 @@ exports.runSetup = async ({answers, serverConfig, username, docker, util}) => {
       for (var i = 0; i < numDeployments; i++) {
         let name = replaceStrings(answers.name, i)
         let conf = {
+          projectname: replaceStrings(answers.projectname || `{name}`, i, name),
           name,
           url: replaceStrings(answers.url || `{name}${serverConfig.baseDomain.startsWith('.')?'':'.'}${serverConfig.baseDomain}`, i, name),
           admin_username: answers.admin_username,
