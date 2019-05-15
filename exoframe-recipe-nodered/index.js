@@ -64,7 +64,7 @@ const start_node_red = async ({username, docker, conf}) => {
   });
 };
 
-function replaceStrings(str, index) {
+function replaceStrings(str, index, name) {
   return str.replace(/\{([^\}]+)\}/g, (match, p1, offset, string) => {
     if (p1.match(/random\.number/)) {
       let m = p1.match(/:(\d)+/)
@@ -86,7 +86,8 @@ function replaceStrings(str, index) {
       return generateName({
         wordCount: m?parseInt(m[1]):2,
       })
-
+    } else if (p1.match(/name/)) {
+      return name
     }
     return ""
   })
@@ -110,9 +111,10 @@ exports.runSetup = async ({answers, serverConfig, username, docker, util}) => {
     let confs = [];
 
       for (var i = 0; i < numDeployments; i++) {
+        let name = replaceStrings(answers.name, i)
         let conf = {
-          name: replaceStrings(answers.name, i),
-          url: replaceStrings(answers.url, i),
+          name,
+          url: replaceStrings(answers.url || `{name}${serverConfig.baseDomain.startsWith('.')?'':'.'}${serverConfig.baseDomain}`, i, name),
           admin_username: answers.admin_username,
           admin_password: answers.admin_password,
           enable_projects: answers.enable_projects,
